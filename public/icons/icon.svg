@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#8b1a1a"/>
+  <g fill="white">
+    <!-- QR code pattern top-left -->
+    <rect x="80" y="80" width="100" height="100" rx="12"/>
+    <rect x="96" y="96" width="68" height="68" rx="6" fill="#8b1a1a"/>
+    <rect x="112" y="112" width="36" height="36" rx="4" fill="white"/>
+    
+    <!-- QR code pattern top-right -->
+    <rect x="332" y="80" width="100" height="100" rx="12"/>
+    <rect x="348" y="96" width="68" height="68" rx="6" fill="#8b1a1a"/>
+    <rect x="364" y="112" width="36" height="36" rx="4" fill="white"/>
+    
+    <!-- QR code pattern bottom-left -->
+    <rect x="80" y="332" width="100" height="100" rx="12"/>
+    <rect x="96" y="348" width="68" height="68" rx="6" fill="#8b1a1a"/>
+    <rect x="112" y="364" width="36" height="36" rx="4" fill="white"/>
+    
+    <!-- Car icon in center -->
+    <path d="M208 240 L224 208 L288 208 L304 240 L320 240 L320 288 L312 288 L312 304 L288 304 L288 288 L224 288 L224 304 L200 304 L200 288 L192 288 L192 240 Z" opacity="0.9"/>
+    <circle cx="220" cy="264" r="12" fill="#8b1a1a"/>
+    <circle cx="292" cy="264" r="12" fill="#8b1a1a"/>
+    
+    <!-- Dots pattern -->
+    <rect x="208" y="100" width="24" height="24" rx="4"/>
+    <rect x="248" y="100" width="24" height="24" rx="4"/>
+    <rect x="208" y="140" width="24" height="24" rx="4"/>
+    <rect x="280" y="140" width="24" height="24" rx="4"/>
+    
+    <rect x="208" y="340" width="24" height="24" rx="4"/>
+    <rect x="248" y="340" width="24" height="24" rx="4"/>
+    <rect x="280" y="380" width="24" height="24" rx="4"/>
+    <rect x="340" y="340" width="24" height="24" rx="4"/>
+    <rect x="380" y="340" width="24" height="24" rx="4"/>
+    <rect x="340" y="380" width="24" height="24" rx="4"/>
+    <rect x="380" y="380" width="24" height="24" rx="4"/>
+    <rect x="340" y="420" width="24" height="24" rx="4"/>
+  </g>
+</svg>
