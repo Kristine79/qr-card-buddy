@@ -1,4 +1,4 @@
-import CreateCard from "./pages/CreateCard";
+import CreateCard from "@/pages/CreateCard";
 
 const Index = () => <CreateCard />;
 
