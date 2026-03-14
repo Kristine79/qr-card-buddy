@@ -79,6 +79,41 @@ const CreateCard = () => {
           </p>
         </div>
 
+        {/* Instructions */}
+        <Card className="mb-6">
+          <CardContent className="pt-6">
+            <h2 className="mb-3 text-lg font-semibold text-foreground">Как
+
+ это работает?</h2>
+            <p className="mb-4 text-sm text-muted-foreground">
+              Автовизитка — ваш цифровой бейдж для автомобиля. Разместите QR-код на лобовом стекле, чтобы другие участники движения могли быстро связаться с вами.
+            </p>
+            <ol className="space-y-3 text-sm text-foreground">
+              <li className="flex gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
+                <span><strong>Заполните форму</strong> — укажите марку, госномер и, при желании, контактные данные и кнопки быстрой связи.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
+                <span><strong>Сгенерируйте QR-код</strong> — нажмите кнопку, и система создаст уникальный код с вашими данными.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">3</span>
+                <span><strong>Скачайте и распечатайте</strong> — разместите QR-код под лобовым стеклом или на видном месте автомобиля.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">4</span>
+                <span><strong>Получайте уведомления</strong> — при сканировании кода откроется страница с вашей визиткой и кнопками связи.</span>
+              </li>
+            </ol>
+            <div className="mt-4 rounded-lg bg-secondary/50 p-3">
+              <p className="text-xs text-muted-foreground">
+                💡 <strong>Приватность:</strong> вы сами выбираете, какие контактные данные показывать. Можно оставить только кнопки быстрой связи без личной информации.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Clear button */}
         <Button variant="outline" size="sm" onClick={clearForm} className="mb-6 gap-2">
           <Eraser className="h-4 w-4" />
