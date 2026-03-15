@@ -12,6 +12,7 @@ const initialData: CardData = {
   vehicle: { brand: "", plate: "" },
   announcement: "",
   owner: { name: "", phone: "", phone2: "", email: "", telegram: "", whatsapp: "" },
+  telegramChatId: "",
   quickActions: { evacuation: false, damage: false, vandalism: false, message: false },
 };
 
