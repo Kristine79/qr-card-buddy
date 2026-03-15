@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { QRCodeSVG } from "qrcode.react";
 import { CardData, encodeCardData } from "@/lib/card-types";
-import { Car, Eraser, Phone, Mail, MessageCircle, Send, Download, AlertTriangle, ShieldAlert, Hammer, QrCode } from "lucide-react";
+import { Car, Eraser, Phone, Mail, MessageCircle, Send, Download, AlertTriangle, ShieldAlert, Hammer, QrCode, Bot } from "lucide-react";
 
 const initialData: CardData = {
   vehicle: { brand: "", plate: "" },
