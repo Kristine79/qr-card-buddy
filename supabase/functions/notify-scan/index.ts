@@ -1,3 +1,4 @@
+// Telegram notification edge function
 const GATEWAY_URL = 'https://connector-gateway.lovable.dev/telegram';
 
 const corsHeaders = {
