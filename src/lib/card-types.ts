@@ -12,6 +12,8 @@ export interface CardData {
     telegram?: string;
     whatsapp?: string;
   };
+  /** Telegram chat ID владельца для уведомлений */
+  telegramChatId?: string;
   quickActions: {
     evacuation: boolean;
     damage: boolean;
