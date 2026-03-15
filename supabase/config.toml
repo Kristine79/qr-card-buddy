@@ -1,1 +1,4 @@
 project_id = "zxtewbbtrkruwdsoties"
+
+[functions.notify-scan]
+verify_jwt = false

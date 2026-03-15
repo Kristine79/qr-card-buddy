@@ -1,12 +1,52 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { decodeCardData } from "@/lib/card-types";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Car, Phone, Mail, Send, MessageCircle, AlertTriangle, ShieldAlert, Hammer } from "lucide-react";
+import { Car, Phone, Mail, Send, MessageCircle, AlertTriangle, ShieldAlert, Hammer, CheckCircle, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
 const ViewCard = () => {
   const { encoded } = useParams<{ encoded: string }>();
   const data = encoded ? decodeCardData(encoded) : null;
+  const notifiedRef = useRef(false);
+  const [sendingAction, setSendingAction] = useState<string | null>(null);
+
+  // Notify owner on page load (scan)
+  useEffect(() => {
+    if (!data?.telegramChatId || notifiedRef.current) return;
+    notifiedRef.current = true;
+
+    supabase.functions.invoke("notify-scan", {
+      body: {
+        chatId: data.telegramChatId,
+        plate: data.vehicle.plate,
+        brand: data.vehicle.brand,
+      },
+    }).catch(console.error);
+  }, [data]);
+
+  const handleQuickAction = async (action: string) => {
+    if (!data?.telegramChatId) return;
+    setSendingAction(action);
+    try {
+      const { error } = await supabase.functions.invoke("notify-scan", {
+        body: {
+          chatId: data.telegramChatId,
+          plate: data.vehicle.plate,
+          brand: data.vehicle.brand,
+          action,
+        },
+      });
+      if (error) throw error;
+      toast({ title: "Уведомление отправлено", description: "Владелец получит сообщение в Telegram" });
+    } catch {
+      toast({ title: "Ошибка", description: "Не удалось отправить уведомление", variant: "destructive" });
+    } finally {
+      setSendingAction(null);
+    }
+  };
 
   if (!data) {
     return (
@@ -37,6 +77,14 @@ const ViewCard = () => {
           </div>
         </Card>
 
+        {/* Telegram notification badge */}
+        {data.telegramChatId && (
+          <div className="mb-4 flex items-center gap-2 rounded-lg bg-secondary px-4 py-2.5 text-sm text-muted-foreground">
+            <CheckCircle className="h-4 w-4 text-success" />
+            Владелец получит уведомление в Telegram
+          </div>
+        )}
+
         {/* Announcement */}
         {data.announcement && (
           <Card className="mb-4">
@@ -52,7 +100,13 @@ const ViewCard = () => {
           <div className="mb-4 space-y-2">
             <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide px-1">Быстрые действия</h2>
             {actions.map(({ key, label, color }) => (
-              <Button key={key} className={`w-full justify-start gap-3 py-5 text-sm font-medium ${color}`}>
+              <Button
+                key={key}
+                className={`w-full justify-start gap-3 py-5 text-sm font-medium ${color}`}
+                onClick={() => handleQuickAction(key)}
+                disabled={!data.telegramChatId || sendingAction === key}
+              >
+                {sendingAction === key ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
                 {label}
               </Button>
             ))}
