@@ -6,12 +6,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { QRCodeSVG } from "qrcode.react";
 import { CardData, encodeCardData } from "@/lib/card-types";
-import { Car, Eraser, Phone, Mail, MessageCircle, Send, Download, AlertTriangle, ShieldAlert, Hammer, QrCode } from "lucide-react";
+import { Car, Eraser, Phone, Mail, MessageCircle, Send, Download, AlertTriangle, ShieldAlert, Hammer, QrCode, Bot } from "lucide-react";
 
 const initialData: CardData = {
   vehicle: { brand: "", plate: "" },
   announcement: "",
   owner: { name: "", phone: "", phone2: "", email: "", telegram: "", whatsapp: "" },
+  telegramChatId: "",
   quickActions: { evacuation: false, damage: false, vandalism: false, message: false },
 };
 
@@ -243,6 +244,24 @@ const CreateCard = () => {
                 </div>
               </div>
             )}
+          </CardContent>
+        </Card>
+
+        {/* Telegram notifications */}
+        <Card className="mb-4">
+          <CardContent className="pt-6">
+            <div className="mb-1 flex items-center gap-2 text-sm font-medium text-foreground">
+              <Bot className="h-4 w-4 text-primary" />
+              Уведомления в Telegram
+            </div>
+            <p className="mb-3 text-xs text-muted-foreground">
+              Укажите ваш Telegram Chat ID, чтобы получать уведомления при сканировании QR-кода. Узнать свой Chat ID можно у бота <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" className="text-primary underline">@userinfobot</a>.
+            </p>
+            <Input
+              placeholder="Например: 123456789"
+              value={data.telegramChatId || ""}
+              onChange={(e) => setData((d) => ({ ...d, telegramChatId: e.target.value }))}
+            />
           </CardContent>
         </Card>
 
