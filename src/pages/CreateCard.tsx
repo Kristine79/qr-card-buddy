@@ -247,6 +247,24 @@ const CreateCard = () => {
           </CardContent>
         </Card>
 
+        {/* Telegram notifications */}
+        <Card className="mb-4">
+          <CardContent className="pt-6">
+            <div className="mb-1 flex items-center gap-2 text-sm font-medium text-foreground">
+              <Bot className="h-4 w-4 text-primary" />
+              Уведомления в Telegram
+            </div>
+            <p className="mb-3 text-xs text-muted-foreground">
+              Укажите ваш Telegram Chat ID, чтобы получать уведомления при сканировании QR-кода. Узнать свой Chat ID можно у бота <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" className="text-primary underline">@userinfobot</a>.
+            </p>
+            <Input
+              placeholder="Например: 123456789"
+              value={data.telegramChatId || ""}
+              onChange={(e) => setData((d) => ({ ...d, telegramChatId: e.target.value }))}
+            />
+          </CardContent>
+        </Card>
+
         {/* Quick action buttons */}
         <Card className="mb-6">
           <CardContent className="pt-6">
